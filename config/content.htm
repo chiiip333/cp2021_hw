@@ -291,7 +291,7 @@ doc["power"].bind("click", gametion)</pre>
 <p></p>
 <p><a href="https://gist.githubusercontent.com/chiiip333/d695973c2080be56b192a4d7bd0b316a/raw/de3549c0e31715b18eb7c23f887b8a0e93185175/hw_Ctype-41023207">中文打字</a></p>
 <p>Gist是Github的一個子服務，且任何人都可以使用這個服務，不論你是否擁有Github帳號。 以開發者的角度來說，最基本的功能就是可以分享片段的原始碼。 有別於Github的Repository，Gist可以只分享專案中的某一個小檔案中的程式碼， 且擁有私人的選項，讓別人不會搜尋到你的Gist。 在Github的Repository設定Private是要付費的，但在Gist是不需要的。 除此之外Gist還有許多用處，包括可以直接執行我們就來一一介紹吧!</p>
-<h2>run1</h2>
+<h2>run</h2>
 <p></p>
 <p><a href="/downloads/w12.txt">w12.txt</a></p>
 <p><a href="https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China#Construction_details">ROC 國旗規格</a>.</p>
@@ -339,7 +339,7 @@ function doSave(storage_id, filename){
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
 </p>
-<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button><button id="red">red</button></p>
+<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button></p>
 <p><!-- ######################  editor1 開始 ###################### --></p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor1" style="width: 600px; height: 300px;"></div>
@@ -436,11 +436,6 @@ rocflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dba
 rocflag = button2(rocflag_url)
 doc["rocflag"].bind("click", rocflag.do)
 ################################## rocflag end
-################################## red start
-red_url = "https://gist.githubusercontent.com/chiiip333/054c1cab1752a7a116f7ba00cfdbd06b/raw/b277708531eb44f352332afd704b13e8401d7a1a/hw_1.-41023207"
-red= button2(red_url)
-doc["red"].bind("click", red.do)
-################################## red end
 </script>
 </p>
 <!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
@@ -452,6 +447,7 @@ doc["red"].bind("click", red.do)
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
 </p>
 <h1>HW2</h1>
+<h2>run1</h2>
 <p>第一種在網頁執行 Brython 程式的方法, 是使用者在網際程式編輯區輸入 Brython 程式碼, 必須手動按下 Run 才能執行.</p>
 <!-- 導入 brython 程式庫 -->
 <p>
@@ -540,6 +536,244 @@ run()
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
 <!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 -->
 <div id="brython_div"></div>
+<div>
+<h2>run2</h2>
+<p>第二種執行 Brython 程式的方法, 是將 Brython 程式存在 Gist, 利用 run.html?src=Gist_URL, <a href="https://chiiip333.github.io/cp2021_hw/content/HW2.html">run.html</a> 中的 Javascript 就會導入此 Gist 程式並自動執行.</p>
+<p><a href="https://mde.tw/cp2021_hw/content/run.html?src=https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py">按下導入 cango_gear1.py 且自動執行</a></p>
+<p>上述連結為:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">https://gist.githubusercontent.com/chiiip333/9ed4b5b3407b7c3cad00713f9b77f2f9/raw/031e57a570210d823e95ee2f0401943f93245984/src
+</pre>
+<p>run.html 後的變數為 ?src=<code class="js comments">https://gist.githubusercontent.com/mdecourse/e896a4705a95ac8cc4147b355b0e87ef/raw/8954b8280c524c5781dc3c0b3565bc489d3aa3a3/cango_gear1.py</code></p>
+<p>其中的 <code class="js comments">e896a4705a95ac8cc4147b355b0e87ef</code> 為 gist 檔案群組編號, 而隨後的 <code class="js comments">8954b8280c524c5781dc3c0b3565bc489d3aa3a3</code> 則為 cango_gear1.py 的版次編號.</p><h2>run3</h2>
+<p></p>
+<!-- 導入 brython 程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+# Spur Gear in Cango and gearUtils-09.js
+from browser import document as doc
+from browser import html
+from browser import window
+import browser.timer
+import math
+# 利用 html 建立一個 CANVAS 標註物件, 與變數 canvas 對應
+canvas = html.CANVAS(width = 600, height = 400)
+# 將 canvas 標註的 id 設為 "cango_gear"
+canvas.id = "cango_gear"
+# 將 document 中 id 為 "brython_div" 的標註
+# 設為與 brython_div 變數對應
+brython_div = doc["brython_div"]
+# 將 canvas 標註放入 brython_div 所在位置
+brython_div <= canvas
+# 將頁面中 id 為 cango_gear 的 CANVAS 設為與 canvas 對應
+canvas = doc["cango_gear"]
+# convert Javascript objects to Brython variables
+cango = window.Cango.new
+circle = window.circle.new
+shape = window.Shape.new
+path = window.Path.new
+creategeartooth = window.createGearTooth.new
+svgsegs = window.SVGsegs.new
+# 經由 Cango 轉換成 Brython 的 cango
+# 指定將圖畫在 id="cango_gear" 的 canvas 上
+cgo = cango("cango_gear")
+# 以下將要使用 gearUtils-09.js 畫出正齒輪外形
+# 假設齒數為 25
+num = 25
+# 利用 gearUtils-09 產生單一齒輪外形資料
+tooth = creategeartooth(10, num, 20)
+# 在 Cango 中, 只有 SVG 才能 rotate, appendPath 或 joinPath
+# 將齒輪外形轉為 SVG segment
+toothSVG = svgsegs(tooth)
+path1 = path(toothSVG.scale(1), {"degs": 45, "x": 100, "y": 100, "strokeColor": "#606060"})
+#print(path1)
+# SVG list
+circle = circle(50)
+#print(circle)
+circleSVG = svgsegs(circle)
+#print(circleSVG)
+# 若將 circleSVG 轉為 Cango path, 則可以用 cgo.render()
+#circlePath = path(circleSVG, {"x": 100, "y": 100, "strokeColor": "#606060"})
+#cgo.render(circlePath)
+# svgsegs 資料可以 joinPath 或 appendPath
+# joinPath 按照頭尾順序銜接
+# appendPath 則無順序銜接
+# 從 toothSVG 複製出單齒 SVG 資料
+one = toothSVG.dup()
+# 以照齒數, 逐一複製並附加在原單齒資料中
+# 第一齒的資料已經在 toothSVG 中, 因此重複迴圈從 1 開始
+for i in range(1, num):
+    newSVG = one.rotate(360*i/num)
+    toothSVG = toothSVG.appendPath(newSVG)
+# 將 SVG 轉為 path 資料
+#gear = path(toothSVG, {"x": 150, "y": 150, "strokeColor": "#606060"})
+# path 資料可以透過 cgo.render()顯示繪圖物件
+#cgo.render(gear)
+# 當 circle 接外齒使用 appendPath
+toothSVG = toothSVG.appendPath(circleSVG)
+#print(toothSVG)
+spurPath = path(toothSVG, {"x": 150, "y": 150, "strokeColor": "#606060"})
+cgo.render(spurPath)
+</script>
+<!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 -->
+<div id="brython_div"></div>
+<!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><h2>W12</h2>
+<p><a href="/downloads/w12.txt">w12.txt</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Flag_of_the_Republic_of_China#Construction_details">ROC 國旗規格</a>.</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E5%9B%BD%E6%97%97#%E8%A7%84%E6%A0%BC">PROC 國旗規格</a> - 可以根據此規格定義, 新增 <button id="procflas">PROC flag</button> 按鈕.</p>
+<p><a href="https://en.wikipedia.org/wiki/Flag_of_the_United_States#Specifications">USA 國旗規格</a> - 可以根據此規格定義, 新增 <button id="usaflag">USA flag</button> 按鈕.</p>
+<!-- 導入 brython 程式庫 -->
+<p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+</p>
+<!-- 啟動 Brython -->
+<p>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/','./../downloads/py/']});
+}
+</script>
+</p>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
+<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
+<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
+</p>
+<p><button id="add1to100">add 1 to 100</button><button id="p261">p261</button><button id="rocflag">ROC flag</button></p>
+<p><!-- ######################  editor1 開始 ###################### --></p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<p><!-- 存擋表單開始 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
+<p><!-- 存擋表單結束 --></p>
+<p></p>
+<p><!-- 執行與清除按鈕開始 --></p>
+<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><!-- 執行與清除按鈕結束 --></p>
+<p></p>
+<p><!-- 程式執行 ouput 區 --></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
+<p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
+<!-- 這裡的畫布 id 為 brython_div -->
+<div id="brython_div"></div>
+<p><!-- ######################  editor1 結束 ###################### --></p>
+<!-- 以下可以開始利用 editor1 的設定編寫對應 Brython 程式 -->
+<p>
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    # 注意這裡清除的畫布 id 為 brython_div
+    bd = doc["brython_div"]
+    bd.clear()
+Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+# 從 gist 取出程式碼後, 放入 editor 作為 default 程式
+def run1():
+    # 利用 get 取下 src 變數值
+    try:
+        url = doc.query["src"]
+    except:
+        url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c3a6deaf717f8f2739a4b1392a5ab10936e9693a/from_1_add_to_10_1.py"
+    prog = open(url).read()
+
+    # 將程式載入編輯區
+    Ace1.editor.setValue(prog)
+    Ace1.editor.scrollToRow(0)
+    Ace1.editor.gotoLine(0)
+    # 直接執行程式
+    #ns = {'__name__':'__main__'}
+    #exec(prog, ns)
+    # 按下 run 按鈕
+    Ace1.run()
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run1'].bind('click', Ace1.run)
+doc['kw_show_console1'].bind('click', Ace1.show_console)
+doc['kw_clear_console1'].bind('click', Ace1.clear_console)
+doc['clear_bd1'].bind('click', clear_bd1)
+# 呼叫函式執行
+run1()
+</script>
+</p>
+<!-- 以上為內建程式, 頁面可透過 ?src=gist_url 執行 -->
+<p><!-- add 1 to 100 開始 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
+    bd.clear()
+
+# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
+Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+
+class button2:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
+add1to100_url = "https://gist.githubusercontent.com/mdecourse/0229a8a017091476a79700b8a190f185/raw/c48e37714f055c3a0027cbfef59e442a6ef659b9/from_1_add_to_100_1.py"
+add1to100 = button2(add1to100_url)
+doc["add1to100"].bind('click', add1to100.do)
+################################# p261 start 
+p261_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/980606effcd29635307d6474718cd4a7ef016747/p261.py"
+p261 = button2(p261_url)
+doc["p261"].bind('click', p261.do)
+################################## p261 end
+################################## rocflag start
+rocflag_url = "https://gist.githubusercontent.com/mdecourse/2f56974a40da7a218dbaef376a5b4ca4/raw/0e2ca81d5c2539c4b6c86071c8cf9de0b1251b9c/roc_flag.py"
+rocflag = button2(rocflag_url)
+doc["rocflag"].bind("click", rocflag.do)
+################################## rocflag end
+</script>
+</p>
 <!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
 <p>
 <script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
@@ -570,4 +804,4 @@ run()
 <p style="padding-left: 30px;"><a href="https://github.com/topics/browser-game">https://github.com/topics/browser-game</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/leereilly/games">https://github.com/leereilly/games</a></p>
 <p style="padding-left: 30px;"><a href="https://bmsleight.github.io/brython-blocks/">https://bmsleight.github.io/brython-blocks/</a></p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/brython-blocks">https://github.com/mdecourse/brython-blocks</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/brython-blocks">https://github.com/mdecourse/brython-blocks</a></p></div>
