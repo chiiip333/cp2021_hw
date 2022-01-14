@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='EXAM.html'>EXAM</a><ul class='dropdown'><li><a href='W13.html'>W13</a></li></ul><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='run.html'>run</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='run1.html'>run1</a><li><a href='run2.html'>run2</a><li><a href='run3.html'>run3</a><li><a href='W12.html'>W12</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li class='has-children'><a href='Algorithms.html'>Algorithms</a><ul class='dropdown'><li><a href='Practice1.html'>Practice1</a><li><a href='Practice2.html'>Practice2</a></li></ul><li><a href='Snake.html'>Snake</a></li></ul><li class='has-children'><a href='Final Project.html'>Final Project</a><ul class='dropdown'><li><a href='Final1.html'>Final1</a><li><a href='Final2.html'>Final2</a><li><a href='Final3.html'>Final3</a></li>
+                     <li><a href='About.html'>About</a><li class='has-children'><a href='EXAM.html'>EXAM</a><ul class='dropdown'><li><a href='W13.html'>W13</a></li></ul><li class='has-children'><a href='HW1.html'>HW1</a><ul class='dropdown'><li><a href='run.html'>run</a></li></ul><li class='has-children'><a href='HW2.html'>HW2</a><ul class='dropdown'><li><a href='run1.html'>run1</a><li><a href='run2.html'>run2</a><li><a href='run3.html'>run3</a><li><a href='W12.html'>W12</a></li></ul><li class='has-children'><a href='HW3.html'>HW3</a><ul class='dropdown'><li><a href='Snake.html'>Snake</a></li></ul><li class='has-children'><a href='Final Project.html'>Final Project</a><ul class='dropdown'><li><a href='Final1.html'>Final1</a><li><a href='Final2.html'>Final2</a><li><a href='Final3.html'>Final3</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,7 +139,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">Practice2 << <a href='Practice2.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project<br /><h1>Snake</h1>
+    <div id="tipue_search_content">HW3 << <a href='HW3.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project<br /><h1>Snake</h1>
 <!-- 導入 brython 程式庫 -->
 <p>
 <script src="./../cmsimde/static/brython.js"></script>
@@ -182,7 +182,7 @@ function doSave(storage_id, filename){
 <script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
 </p>
-<p><button id="foolish">foolish</button><button id="bright">bright</button></p>
+<p><button id="snake">snake</button></p>
 <p><!-- ######################  editor1 開始 ###################### --></p>
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
 <div id="kw_editor1" style="width: 600px; height: 300px;"></div>
@@ -266,14 +266,9 @@ class button2:
         Ace2.editor.gotoLine(0)
         Ace2.run()
 
-foolish_url = "https://gist.githubusercontent.com/chiiip333/3f2af491d1b8120c441e2ff89330927d/raw/e1612ae353e6313361e7b4a2bff251887273e9e9/FS"
-foolish = button2(foolish_url)
-doc["foolish"].bind('click', foolish.do)
-################################# bright start 
-bright_url = "https://gist.githubusercontent.com/chiiip333/41f2afe453e95681d07472818c2f5329/raw/02ace3912ef3218ad247ec669e2f33b33385512c/BS"
-bright = button2(bright_url)
-doc["bright"].bind('click', bright.do)
-################################## bright end
+snake_url = "https://gist.githubusercontent.com/chiiip333/d7e18bb38cc35cf8f630d4368ce92e8e/raw/e69f0c523f19eae011f31e41570629bf4b8267e0/snake"
+snake = button2(snake_url)
+doc["snake"].bind('click', snake.do)
 </script>
 </p>
 <!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
@@ -285,8 +280,7 @@ doc["bright"].bind('click', bright.do)
 <script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script>
 </p>
 <p></p>
-<p><!-- ######################  editor1 結束 ###################### --></p>
-<br />Practice2 << <a href='Practice2.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project</div>
+<p><!-- ######################  editor1 結束 ###################### --></p><br />HW3 << <a href='HW3.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project</div>
         
     <!-- footer -->
       <div class="container">
